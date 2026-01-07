@@ -1,0 +1,9 @@
+project:
+  type: website
+
+website:
+  title: "Pitch Deck"
+
+format:
+  html:
+    theme: default
