@@ -1,0 +1,63 @@
+```{=html}
+<section class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-card">
+      <a class="timeline-link" href="https://example.com" target="_blank" rel="noopener">
+        <img src="assets/images/covers/2019-summer.jpg" alt="2019 summer cover">
+      </a>
+    </div>
+    <div class="timeline-date">2019 Summer</div>
+    <div class="timeline-dot" aria-hidden="true"></div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-card">
+      <a class="timeline-link" href="https://example.com" target="_blank" rel="noopener">
+        <img src="assets/images/covers/2022-summer.jpg" alt="2022 summer cover">
+      </a>
+    </div>
+    <div class="timeline-date">2022 Summer</div>
+    <div class="timeline-dot" aria-hidden="true"></div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-card">
+      <a class="timeline-link" href="https://example.com" target="_blank" rel="noopener">
+        <img src="assets/images/covers/2023-summer.jpg" alt="2023 summer cover">
+      </a>
+    </div>
+    <div class="timeline-date">2023 Summer</div>
+    <div class="timeline-dot" aria-hidden="true"></div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-card">
+      <a class="timeline-link" href="https://example.com" target="_blank" rel="noopener">
+        <img src="assets/images/covers/2024-summer.jpg" alt="2024 summer cover">
+      </a>
+    </div>
+    <div class="timeline-date">2024 Summer</div>
+    <div class="timeline-dot" aria-hidden="true"></div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-card">
+      <a class="timeline-link" href="https://example.com" target="_blank" rel="noopener">
+        <img src="assets/images/covers/2025-summer.jpg" alt="2025 summer cover">
+      </a>
+    </div>
+    <div class="timeline-date">2025 Summer</div>
+    <div class="timeline-dot" aria-hidden="true"></div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-card">
+      <a class="timeline-link" href="https://example.com" target="_blank" rel="noopener">
+        <img src="assets/images/covers/2025-winter.jpg" alt="2025 winter cover">
+      </a>
+    </div>
+    <div class="timeline-date">2025 Winter</div>
+    <div class="timeline-dot" aria-hidden="true"></div>
+  </div>
+</section>
+```

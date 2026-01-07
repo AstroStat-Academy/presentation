@@ -1,0 +1,17 @@
+```{=html}
+<div class="layout-row">
+  <div class="panel">
+    <div class="bubble">
+      Are you an astronomer feeling your knowledge of Statistics is not enough?
+    </div>
+    <img src="assets/images/paranormal.png" alt="statistics ghost">
+  </div>
+
+  <div class="panel">
+    <div class="bubble">
+      Are you familiar with Machine Learning but are looking to demystify this "black box"?
+    </div>
+    <img src="assets/images/monster_NN.png" alt="machine learning monster">
+  </div>
+</div>
+```

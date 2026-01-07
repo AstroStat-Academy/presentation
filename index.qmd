@@ -1,7 +1,21 @@
 ---
-title: "Home"
-format: html
+title: "The AstroStat Academy in a nutshell"
+format:
+  html:
+    css: styles.css
 ---
+
+{{< include section-scary.qmd >}}
+
+{{< include section-fear_no_statistic.qmd >}}
+
+<div class="section-spacer"></div>
+
+{{< include section-level.qmd >}}
+
+<div class="section-spacer"></div>
+
+{{< include section-timeline.qmd >}}
 
 ```{python}
 #| echo: false

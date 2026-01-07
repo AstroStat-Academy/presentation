@@ -1,0 +1,5 @@
+```{=html}
+<div class="centered-image">
+  <img src="assets/images/level.png" alt="level">
+</div>
+```

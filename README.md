@@ -21,7 +21,7 @@ conda activate quarto-env
 quarto --version
 
 4. Render the site  
-quarto render
+quarto render --clean
 
 5. Open the result  
 Linux: xdg-open _site/index.html  

@@ -1,0 +1,5 @@
+```{=html}
+<div class="hero-text">
+  Fear. No. Statistic.
+</div>
+```
