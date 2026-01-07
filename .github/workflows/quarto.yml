@@ -26,6 +26,11 @@ jobs:
         run: |
           python -m ipykernel install --user --name quarto-env
 
+      - name: Force Quarto to use conda Python
+        shell: bash -l {0}
+        run: |
+          echo "QUARTO_PYTHON=$(which python)" >> $GITHUB_ENV
+
       - name: Render
         shell: bash -l {0}
         run: quarto render
@@ -34,4 +39,4 @@ jobs:
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
-
+          render: false
