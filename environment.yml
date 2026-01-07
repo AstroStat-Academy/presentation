@@ -1,0 +1,9 @@
+name: quarto-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - plotly
+  - pandas
+  - jupyter
+
