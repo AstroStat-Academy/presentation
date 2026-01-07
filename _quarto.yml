@@ -6,4 +6,6 @@ website:
 
 format:
   html:
-    theme: default
+    theme: [quartz, custom.scss]
+    execute:
+      echo: false  # prevents the Python code from being shown while still executing it and displaying the output.
