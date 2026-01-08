@@ -7,19 +7,32 @@ format:
 
 {{< include section-scary.qmd >}}
 
-{{< include section-fear_no_statistic.qmd >}}
+```{=html}
+<div class="nav nav-pills mt-3" role="tablist" aria-label="Content switcher">
+  <button class="nav-link active" id="btn-alpha-tab" data-bs-toggle="pill" data-bs-target="#btn-alpha" type="button" role="tab" aria-controls="btn-alpha" aria-selected="true">The Academy</button>
+  <button class="nav-link" id="btn-bravo-tab" data-bs-toggle="pill" data-bs-target="#btn-bravo" type="button" role="tab" aria-controls="btn-bravo" aria-selected="false">Bravo</button>
+  <button class="nav-link" id="btn-charlie-tab" data-bs-toggle="pill" data-bs-target="#btn-charlie" type="button" role="tab" aria-controls="btn-charlie" aria-selected="false">Charlie</button>
+</div>
 
-<div class="section-spacer"></div>
-
-{{< include section-level.qmd >}}
-
-<div class="section-spacer"></div>
-
-{{< include section-timeline.qmd >}}
-
+<div class="tab-content mt-3" id="buttonTabContent">
+  <div class="tab-pane fade show active" id="btn-alpha" role="tabpanel">
+```
+{{< include section-the_academy.qmd >}}
+```{=html}
+  </div>
+  <div class="tab-pane fade" id="btn-bravo" role="tabpanel">
+    <p>Placeholder.</p>
+  </div>
+  <div class="tab-pane fade" id="btn-charlie" role="tabpanel">
+```
 ```{python}
-#| echo: false
+#| echo: false  # hide the code
 import plotly.express as px
 fig = px.line(x=[1,2,3], y=[1,4,9])
 fig
+```
+
+```{=html}
+  </div>
+</div>
 ```
