@@ -2,6 +2,8 @@
 
 This repository contains a Quarto website with interactive Plotly charts and a customized Quartz theme.
 
+Live site: [https://astrostat-academy.github.io/presentation/](https://astrostat-academy.github.io/presentation/)
+
 ## Prerequisites
 - Git
 - Conda (or Mamba)
