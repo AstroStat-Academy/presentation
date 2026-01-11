@@ -7,5 +7,6 @@ website:
 format:
   html:
     theme: [sketchy]  # try: default, vapor, sketchy (https://bootswatch.com/sketchy/)
+    page-layout: full
     execute:
       echo: false  # prevents the Python code from being shown while still executing it and displaying the output.

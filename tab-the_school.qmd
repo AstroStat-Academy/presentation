@@ -1,0 +1,13 @@
+```{=html}
+<section>
+
+  <p>Leveraging years of experience, the field knowledge of our instructors, and a carefully orchestrated curriculum supported by refined lectures, we have created a robust and well-tested teaching experience - enter the AstroStatistics School !</p>
+
+  In a few words, we allow students to grow from amateurs to professionals:
+  <br><br>
+  <div class="centered-image">
+    <img src="assets/images/level.png" alt="level">
+  </div>
+
+</section>
+```

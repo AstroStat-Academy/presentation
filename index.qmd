@@ -1,27 +1,68 @@
 ---
-title: "The AstroStat Academy in a nutshell"
+title: "The AstroStat Academy<br>in a nutshell"
 format:
   html:
-    css: styles.css
+    css: css/styles.css
 ---
 
 {{< include section-scary.qmd >}}
 
 ```{=html}
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">What is the Academy</h5>
+      <small>-</small>
+    </div>
+    <p class="mb-1 text-start">We are an association of instructors committed to advancing education in statistics and machine learning.</p>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><br>Our mission</h5>
+      <small class="text-muted">-</small>
+    </div>
+    <p class="mb-1 text-start">We operate on different fronts:
+      <ul class="text-start">
+        <li>
+          Supporting early-career astronomers in identifying and mastering analysis tools they may only know superficially, or have previously struggled to learn without structured guidance.
+        </li>
+        <li>
+          Preparing additional personnel to become instructors and assisting with the organization of teaching events.
+        </li>
+      </ul>
+    </p>
+  </a>
+</div>
+```
+
+```{=html}
 <div class="nav nav-pills mt-3" role="tablist" aria-label="Content switcher">
-  <button class="nav-link active" id="btn-alpha-tab" data-bs-toggle="pill" data-bs-target="#btn-alpha" type="button" role="tab" aria-controls="btn-alpha" aria-selected="true">The Academy</button>
-  <button class="nav-link" id="btn-bravo-tab" data-bs-toggle="pill" data-bs-target="#btn-bravo" type="button" role="tab" aria-controls="btn-bravo" aria-selected="false">Bravo</button>
-  <button class="nav-link" id="btn-charlie-tab" data-bs-toggle="pill" data-bs-target="#btn-charlie" type="button" role="tab" aria-controls="btn-charlie" aria-selected="false">Charlie</button>
+  <button class="nav-link active" id="btn-alpha-tab" data-bs-toggle="pill" data-bs-target="#btn-alpha" type="button" role="tab" aria-controls="btn-alpha" aria-selected="true">The AstroStatistics School</button>
+  
+  <button class="nav-link" id="btn-method-tab" data-bs-toggle="pill" data-bs-target="#btn-method" type="button" role="tab" aria-controls="btn-method" aria-selected="false">Method</button>
+  
+  <button class="nav-link" id="btn-charlie-tab" data-bs-toggle="pill" data-bs-target="#btn-events" type="button" role="tab" aria-controls="btn-events" aria-selected="false">Events</button>  
+
+  <button class="nav-link" id="btn-topics-tab" data-bs-toggle="pill" data-bs-target="#btn-topics" type="button" role="tab" aria-controls="btn-topics" aria-selected="false">Topics</button>
+
+  <button class="nav-link" id="btn-attendants-tab" data-bs-toggle="pill" data-bs-target="#btn-attendants" type="button" role="tab" aria-controls="btn-attendants" aria-selected="false">Attendants</button>
 </div>
 
 <div class="tab-content mt-3" id="buttonTabContent">
   <div class="tab-pane fade show active" id="btn-alpha" role="tabpanel">
 ```
-{{< include section-the_academy.qmd >}}
+{{< include tab-the_school.qmd >}}
 ```{=html}
   </div>
-  <div class="tab-pane fade" id="btn-bravo" role="tabpanel">
-    <p>Placeholder.</p>
+  <div class="tab-pane fade" id="btn-method" role="tabpanel">
+```
+{{< include tab-method.qmd >}}
+```{=html}
+  </div>
+  <div class="tab-pane fade" id="btn-topics" role="tabpanel">
+```
+{{< include tab-topics.qmd >}}
+```{=html}
   </div>
   <div class="tab-pane fade" id="btn-charlie" role="tabpanel">
 ```

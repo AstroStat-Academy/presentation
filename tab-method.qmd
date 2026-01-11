@@ -1,0 +1,17 @@
+```{=html}
+<section>
+
+  <p>
+  Our lectures are a mix of theory and hands-on applications, usually via Python notebooks. This successful recipy provides the necessary variety to keep the interest alive and the students engaged !
+  <br><br>
+  Our teaching philosophy is to go hand-in-hand with the students so that no one is left behind ! We encourage both teacher-student and student-student interactions.
+  <br><br>
+  Check us in action in this school we held in Sharjah (United Emirates, 2025):
+
+  <br><br>
+  <div class="centered-image">
+    <video src="assets/videos/Sharjah.MP4" controls playsinline></video>
+  </div>
+
+</section>
+```
