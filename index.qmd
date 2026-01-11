@@ -71,6 +71,7 @@ format:
 import plotly.express as px
 fig = px.line(x=[1,2,3], y=[1,4,9])
 fig
+
 ```
 
 ```{=html}
