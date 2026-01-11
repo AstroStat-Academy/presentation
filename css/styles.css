@@ -109,7 +109,7 @@ h1.title {
 
 .centered-image video {
   display: block;
-  max-width: min(70%, 560px);
+  max-width: min(90%, 900px);
   height: auto;
 }
 
