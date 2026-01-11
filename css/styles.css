@@ -8,6 +8,28 @@ h1.title {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
 }
 
+.quarto-title {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.quarto-title::before {
+  content: "";
+  display: block;
+  width: clamp(80px, 10vw, 140px);
+  height: clamp(80px, 10vw, 140px);
+  background: url("../assets/images/logo_w_lowres.png") center/contain no-repeat;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 640px) {
+  .quarto-title {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 .layout-row {
   display: flex;
   justify-content: space-between;
@@ -83,6 +105,90 @@ h1.title {
   display: block;
   max-width: min(70%, 560px);
   height: auto;
+}
+
+.centered-image video {
+  display: block;
+  max-width: min(70%, 560px);
+  height: auto;
+}
+
+.topics-section {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.topics-table {
+  border-collapse: separate;
+  border-spacing: 2.5rem 0;
+}
+
+.topics-cell {
+  background: #b6d64a;
+  color: #111111;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  vertical-align: top;
+  min-width: min(40vw, 360px);
+}
+
+.topics-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.topics-list {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.table,
+.table > :not(caption) > * > * {
+  background-color: transparent !important;
+}
+
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-striped-bg: transparent;
+  --bs-table-active-bg: transparent;
+  --bs-table-hover-bg: transparent;
+}
+
+.table-hover tbody tr:hover > * {
+  background-color: transparent !important;
+}
+
+.table thead,
+.table tbody,
+.table tfoot,
+.table tr,
+.table th,
+.table td {
+  background-color: transparent !important;
+}
+
+.topics-spacer {
+  width: 3rem;
+}
+
+@media (max-width: 900px) {
+  .topics-table {
+    border-spacing: 0;
+  }
+
+  .topics-cell {
+    display: block;
+    width: 100%;
+    min-width: auto;
+    margin: 0 0 1.5rem;
+  }
+
+  .topics-spacer {
+    display: none;
+  }
 }
 
 .timeline {
