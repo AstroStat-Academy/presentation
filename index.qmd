@@ -41,7 +41,7 @@ format:
   
   <button class="nav-link" id="btn-method-tab" data-bs-toggle="pill" data-bs-target="#btn-method" type="button" role="tab" aria-controls="btn-method" aria-selected="false">Method</button>
   
-  <button class="nav-link" id="btn-charlie-tab" data-bs-toggle="pill" data-bs-target="#btn-events" type="button" role="tab" aria-controls="btn-events" aria-selected="false">Events</button>  
+  <button class="nav-link" id="btn-events-tab" data-bs-toggle="pill" data-bs-target="#btn-events" type="button" role="tab" aria-controls="btn-events" aria-selected="false">Events</button>  
 
   <button class="nav-link" id="btn-topics-tab" data-bs-toggle="pill" data-bs-target="#btn-topics" type="button" role="tab" aria-controls="btn-topics" aria-selected="false">Topics</button>
 
@@ -64,7 +64,12 @@ format:
 {{< include tab-topics.qmd >}}
 ```{=html}
   </div>
-  <div class="tab-pane fade" id="btn-charlie" role="tabpanel">
+  <div class="tab-pane fade" id="btn-events" role="tabpanel">
+```
+{{< include tab-timeline.qmd >}}
+```{=html}
+  </div>
+  <div class="tab-pane fade" id="btn-attendants" role="tabpanel">
 ```
 ```{python}
 #| echo: false  # hide the code
