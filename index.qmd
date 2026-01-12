@@ -5,7 +5,9 @@ format:
     css: css/styles.css
 ---
 
+<br><br>
 {{< include section-scary.qmd >}}
+<br><br>
 
 ```{=html}
 <div class="list-group">
@@ -24,7 +26,7 @@ format:
     <p class="mb-1 text-start">We operate on different fronts:
       <ul class="text-start">
         <li>
-          Supporting early-career astronomers in identifying and mastering analysis tools they may only know superficially, or have previously struggled to learn without structured guidance.
+          Supporting early-career researchers and data scientists in mastering analysis tools they may only know superficially, or have previously struggled to learn without structured guidance.
         </li>
         <li>
           Preparing additional personnel to become instructors and assisting with the organization of teaching events.

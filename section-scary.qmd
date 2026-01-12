@@ -9,7 +9,7 @@
 
   <div class="panel">
     <div class="alert alert-warning">
-      Are you familiar with Machine Learning but are looking to demystify this "black box"?
+      You know some Machine Learning but want to see inside the "black box"?
     </div>
     <img src="assets/images/monster_NN.png" alt="machine learning monster">
   </div>
@@ -17,8 +17,10 @@
 
 <section class="hero-section">
   <div class="hero-text">
-    You are in luck!
+    You are in luck
   </div>
-  The AstroStat Academy is here to help!
+  <div class="hero-subtitle">
+    The AstroStat Academy is here to help!
+  </div>
 </section>
 ```
