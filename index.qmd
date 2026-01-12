@@ -73,6 +73,7 @@ format:
   </div>
   <div class="tab-pane fade" id="btn-attendants" role="tabpanel">
 ```
+
 ```{python}
 #| echo: false  # hide the code
 import plotly.express as px
