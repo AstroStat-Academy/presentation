@@ -1,14 +1,14 @@
 ```{=html}
-<table class="table table-hover">
-  Given that our target students are early-career scientists, our schedule always strikes a balance between "core" topics and "seasonal" ones.
-  <ul class="mt-0 mb-0">
-    <li>Core topics are always part of a school's schedule because they provide the essential foundation for all applications—fundamentals every researcher must master.</li>
-    <li>Seasonal topics are state-of-the-art subjects that change from event to event so we can explore new trends in statistics, stay current, and invite dedicated speakers.</li>
-  </ul>
-  <br>
-  This is what we covered so far:
-  <br>
+Given that our target students are early-career scientists, our schedule always strikes a balance between "core" topics and "seasonal" ones.
+<ul class="mt-0 mb-0">
+  <li>Core topics are always part of a school's schedule because they provide the essential foundation for all applications—fundamentals every researcher must master.</li>
+  <li>Seasonal topics are state-of-the-art subjects that change from event to event so we can explore new trends in statistics, stay current, and invite dedicated speakers.</li>
+</ul>
+<br>
+This is what we covered so far:
+<br>
 
+<table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">Core</th>
