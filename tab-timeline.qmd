@@ -2,6 +2,8 @@ Our School was born in Crete in 2019, and after the Covid break, rapidly establi
 
 And - why not?! - the next event may be in your very institute!
 
+Click on one of the cards below to be redirected to that event's webpage:
+
 ```{=html}
 <section class="timeline">
   <div class="timeline-item">
