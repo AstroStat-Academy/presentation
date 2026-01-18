@@ -5,7 +5,7 @@ Given that our target students are early-career scientists, our schedule always 
   <li>Seasonal topics are state-of-the-art subjects that change from event to event so we can explore new trends in statistics, stay current, and invite dedicated speakers.</li>
 </ul>
 <br>
-This is what we covered so far:
+This is what we covered so far, along with some subjects we would like to cover in future editions:
 <br>
 
 <table class="table table-hover">
@@ -13,31 +13,38 @@ This is what we covered so far:
     <tr>
       <th scope="col">Core</th>
       <th scope="col">Seasonal</th>
+      <th scope="col">Future</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>
         Classical Statistics<br>
-        Hypothesis testing<br>
+        Hypothesis Testing<br>
         Optimization<br>
         Bayesian Statistics<br>
         MCMC<br>
-        ML/DL introduction<br>
+        ML/DL Introduction<br>
         Clustering<br>
         Classification<br>
         Regression<br>
-        Model selection<br>
-        ML best practices
+        Model Selection<br>
+        ML Best Practices
       </td>
       <td>
         Time Series<br>
         CNNs<br>
         Diffusion models<br>
         Simulation Based Inference<br>
-        GPU parallelization<br>
+        GPU Parallelization<br>
         Gaussian Processes<br>
+        Bayesian Optimization<br>
         Citizen Science
+      </td>
+      <td>
+        LLM pipelines<br>
+        AI Agents<br>
+        Knowledge maps<br>
       </td>
     </tr>
   </tbody>

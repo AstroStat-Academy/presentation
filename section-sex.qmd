@@ -1,0 +1,156 @@
+```{python}
+#| echo: false
+#| output: false
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+
+df_sex = pd.read_csv("assets/data/participants_until_2025.csv")
+df_sex["accepted"] = df_sex["accepted"].astype(str).str.upper().eq("TRUE")
+df_sex["year_num"] = pd.to_numeric(df_sex["year"], errors="coerce")
+df_sex["year"] = np.floor(df_sex["year_num"]).astype("Int64")
+
+df_sex["sex_norm"] = (
+    df_sex["sex"]
+    .astype(str)
+    .str.strip()
+    .str.upper()
+    .str[0]
+)
+df_sex = df_sex[df_sex["sex_norm"].isin(["F", "M"])]
+
+years = (
+    df_sex["year"]
+    .dropna()
+    .astype(int)
+    .sort_values()
+    .unique()
+)
+year_labels = [str(y) for y in years]
+
+def counts_by_year(dataframe, year_index):
+    counts = (
+        dataframe.groupby(["year", "sex_norm"])
+        .size()
+        .unstack(fill_value=0)
+        .reindex(year_index, fill_value=0)
+    )
+    female_counts = counts["F"] if "F" in counts else pd.Series(0, index=year_index)
+    male_counts = counts["M"] if "M" in counts else pd.Series(0, index=year_index)
+    return female_counts, male_counts
+
+df_applicants = df_sex
+df_participants = df_sex[df_sex["accepted"]]
+
+female_app, male_app = counts_by_year(df_applicants, years)
+female_part, male_part = counts_by_year(df_participants, years)
+
+max_count = int(
+    max(
+        female_app.max(),
+        male_app.max(),
+        female_part.max(),
+        male_part.max(),
+        1,
+    )
+)
+tick_step = max(1, int(np.ceil(max_count / 4)))
+tick_vals = list(range(-max_count, max_count + 1, tick_step))
+tick_text = [str(abs(v)) for v in tick_vals]
+
+fig_sex = go.Figure()
+fig_sex.add_bar(
+    name="Applicants",
+    y=year_labels,
+    x=-female_app.values,
+    orientation="h",
+    marker_color="#2f3b52",
+    legendgroup="Applicants",
+    offsetgroup="Applicants",
+    hovertemplate="Year %{y}<br>Female applicants %{customdata}<extra></extra>",
+    customdata=female_app.values,
+)
+fig_sex.add_bar(
+    name="Participants",
+    y=year_labels,
+    x=-female_part.values,
+    orientation="h",
+    marker_color="#bb361e",
+    legendgroup="Participants",
+    offsetgroup="Participants",
+    hovertemplate="Year %{y}<br>Female participants %{customdata}<extra></extra>",
+    customdata=female_part.values,
+)
+fig_sex.add_bar(
+    name="Applicants",
+    y=year_labels,
+    x=male_app.values,
+    orientation="h",
+    marker_color="#2f3b52",
+    legendgroup="Applicants",
+    offsetgroup="Applicants",
+    showlegend=False,
+    hovertemplate="Year %{y}<br>Male applicants %{customdata}<extra></extra>",
+    customdata=male_app.values,
+)
+fig_sex.add_bar(
+    name="Participants",
+    y=year_labels,
+    x=male_part.values,
+    orientation="h",
+    marker_color="#bb361e",
+    legendgroup="Participants",
+    offsetgroup="Participants",
+    showlegend=False,
+    hovertemplate="Year %{y}<br>Male participants %{customdata}<extra></extra>",
+    customdata=male_part.values,
+)
+fig_sex.update_layout(
+    barmode="group",
+    height=360,
+    width=1100,
+    margin=dict(l=70, r=70, t=50, b=40),
+    title_text="Applicants <i>vs</i> participants by sex",
+    title_y=0.97,
+    xaxis_title="Number",
+    yaxis_title="Year",
+    barcornerradius=6,
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+    legend=dict(
+        x=0.02,
+        y=0.98,
+        bgcolor="rgba(0,0,0,0)",
+        bordercolor="rgba(255,255,255,0.4)",
+        borderwidth=1,
+        font=dict(color="#ffffff"),
+    ),
+    font=dict(color="#ffffff"),
+    template="simple_white",
+)
+fig_sex.update_xaxes(
+    tickvals=tick_vals,
+    ticktext=tick_text,
+    color="#ffffff",
+    tickfont=dict(color="#ffffff"),
+    title_font=dict(color="#ffffff"),
+    gridcolor="rgba(255,255,255,0.25)",
+    zerolinecolor="rgba(255,255,255,0.4)",
+    linecolor="rgba(255,255,255,0.6)",
+)
+fig_sex.update_yaxes(
+    categoryorder="array",
+    categoryarray=year_labels,
+    autorange="reversed",
+    color="#ffffff",
+    tickfont=dict(color="#ffffff"),
+    title_font=dict(color="#ffffff"),
+    gridcolor="rgba(255,255,255,0.15)",
+    linecolor="rgba(255,255,255,0.6)",
+)
+```
+
+```{python}
+#| echo: false
+fig_sex
+```

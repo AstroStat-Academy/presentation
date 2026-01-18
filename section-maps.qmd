@@ -1,0 +1,188 @@
+```{=html}
+Over the years, we collected applications from 600+ candidates, and we managed to instruct over 180 students from all over the world.
+<br>
+The school outreach has been predominant around Greece, its birth-place, but we would now like to broaden it coverage - join us !
+<br>
+
+```
+
+```{python}
+#| echo: false  # hides python code
+#| output: false
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+
+iso3_map = {
+    "Algeria": "DZA",
+    "Argentina": "ARG",
+    "Austria": "AUT",
+    "Belgium": "BEL",
+    "Brazil": "BRA",
+    "Bulgaria": "BGR",
+    "Canada": "CAN",
+    "Chad": "TCD",
+    "Chile": "CHL",
+    "China": "CHN",
+    "Croatia": "HRV",
+    "Cuba": "CUB",
+    "Cyprus": "CYP",
+    "Czechia": "CZE",
+    "Egypt": "EGY",
+    "Estonia": "EST",
+    "Finland": "FIN",
+    "France": "FRA",
+    "Germany": "DEU",
+    "Ghana": "GHA",
+    "Greece": "GRC",
+    "Hungary": "HUN",
+    "India": "IND",
+    "Iran": "IRN",
+    "Ireland": "IRL",
+    "Israel": "ISR",
+    "Italy": "ITA",
+    "Japan": "JPN",
+    "Jordan": "JOR",
+    "Kazakhstan": "KAZ",
+    "Letonia": "LVA",
+    "Mexico": "MEX",
+    "Morocco": "MAR",
+    "Nepal": "NPL",
+    "Netherlands": "NLD",
+    "NewZealand": "NZL",
+    "Norway": "NOR",
+    "Oman": "OMN",
+    "Palestine": "PSE",
+    "Poland": "POL",
+    "Portugal": "PRT",
+    "Romania": "ROU",
+    "Russia": "RUS",
+    "Serbia": "SRB",
+    "Slovakia": "SVK",
+    "Slovenia": "SVN",
+    "SouthAfrica": "ZAF",
+    "Spain": "ESP",
+    "Sweden": "SWE",
+    "Switzerland": "CHE",
+    "Syria": "SYR",
+    "Tunisia": "TUN",
+    "Turkey": "TUR",
+    "UAE": "ARE",
+    "UK": "GBR",
+    "USA": "USA",
+    "Uganda": "UGA",
+    "Uzbekistan": "UZB",
+}
+
+def filter_df(dataframe, accepted=None, max_year=None):
+    df = dataframe
+    if accepted is not None:
+        df = df[df["accepted"] == accepted]
+    if max_year is not None:
+        df = df[df["year"] <= max_year]
+    return df
+
+
+def make_globe(dataframe, countries, iso3_list, color_scale):
+    counts = (
+        dataframe["country"]
+        .astype(str)
+        .str.strip()
+        .value_counts()
+        .to_dict()
+    )
+    count_list = [counts.get(country, 0) for country in countries]
+    count_log_list = [np.log10(count + 1) for count in count_list]
+    fig = go.Figure(
+        go.Choropleth(
+            locations=iso3_list,
+            z=count_log_list,
+            text=countries,
+            customdata=count_list,
+            colorscale=color_scale,
+            hovertemplate="%{text}<br>count=%{customdata}<extra></extra>",
+            showscale=True,
+            colorbar=dict(
+                title=dict(text="log10", font=dict(color="rgba(255,255,255,0.9)")),
+                ticklabelposition="outside",
+                tickfont=dict(color="rgba(255,255,255,0.9)"),
+                ticklen=6,
+                ticks="outside",
+                tickwidth=1,
+            ),
+        )
+    )
+    fig.update_layout(
+        margin=dict(l=0, r=0, t=40, b=0),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+    )
+    fig.update_geos(
+        showframe=False,
+        showcoastlines=True,
+        showcountries=True,
+        countrycolor="rgba(255,255,255,0.9)",
+        projection_type="orthographic",
+        projection_rotation=dict(lon=25.1442, lat=35.3387),
+        bgcolor="rgba(0,0,0,0)",
+    )
+    return fig
+
+
+df_all = pd.read_csv("assets/data/participants_until_2025.csv")
+
+countries = list(iso3_map.keys())
+iso3_list = [iso3_map[country] for country in countries]
+applicants_scale = [
+    "#0d1a2b",
+    "#204a87",
+    "#2f6ea7",
+    "#4a91b3",
+    "#76b59f",
+    "#b7d77d",
+    "#f0f9a8",
+]
+participants_scale = [
+    "#f0f9a8",
+    "#fee5d9",
+    "#fcbba1",
+    "#fc9272",
+    "#fb6a4a",
+    "#ef3b2c",
+    "#cb181d",
+]
+
+fig_left = make_globe(
+    filter_df(df_all, accepted=None, max_year=None),
+    countries,
+    iso3_list,
+    applicants_scale,
+)
+fig_right = make_globe(
+    filter_df(df_all, accepted=True, max_year=None),
+    countries,
+    iso3_list,
+    participants_scale,
+)
+```
+
+```{=html}
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <h4 class="text-center flex-grow-1 mb-0">Applicants</h4>
+  <h4 class="text-center flex-grow-1 mb-0">Participants</h4>
+</div>
+```
+::: {.columns style="column-gap: 3rem; gap: 3rem;"}
+::: {.column style="width: 50%; padding-right: 1.5rem;"}
+```{python}
+#| echo: false
+fig_left
+```
+:::
+::: {.column style="width: 50%; padding-left: 1.5rem;"}
+```{python}
+#| echo: false
+fig_right
+```
+:::
+:::

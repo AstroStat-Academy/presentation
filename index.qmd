@@ -73,9 +73,25 @@ format:
   </div>
   <div class="tab-pane fade" id="btn-attendants" role="tabpanel">
 ```
-{{< include tab-maps.qmd >}}
-
+{{< include tab-attendants.qmd >}}
 ```{=html}
   </div>
 </div>
 ```
+
+<br>
+```{=html}
+<h2 class="text-center" style="border-bottom: 0;">Stats from the Stats schools (Stats<sup>2</sup> !)</h2>
+```
+
+{{< include section-maps.qmd >}}
+
+<br><br>
+{{< include section-histograms.qmd >}}
+
+<br><br>
+{{< include section-sex.qmd >}}
+
+<br><br>
+{{< include section-levels.qmd >}}
+

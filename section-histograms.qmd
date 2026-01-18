@@ -1,0 +1,192 @@
+```{python}
+#| echo: false
+#| output: false
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+
+df_hist = pd.read_csv("assets/data/participants_until_2025.csv")
+df_hist["accepted"] = df_hist["accepted"].astype(str).str.upper().eq("TRUE")
+df_hist["year_num"] = pd.to_numeric(df_hist["year"], errors="coerce")
+df_hist["year"] = np.floor(df_hist["year_num"]).astype("Int64")
+
+applicants_by_year = df_hist.groupby("year").size()
+participants_by_year = df_hist[df_hist["accepted"]].groupby("year").size()
+
+years = applicants_by_year.index.dropna().astype(int).sort_values()
+applicants_cum = applicants_by_year.reindex(years, fill_value=0).cumsum()
+participants_cum = participants_by_year.reindex(years, fill_value=0).cumsum()
+
+institutes_by_year = df_hist.groupby("year")["institute"].nunique()
+institutes_part_by_year = df_hist[df_hist["accepted"]].groupby("year")[
+    "institute"
+].nunique()
+institutes_cum = institutes_by_year.reindex(years, fill_value=0).cumsum()
+institutes_part_cum = institutes_part_by_year.reindex(years, fill_value=0).cumsum()
+
+countries_by_year = df_hist.groupby("year")["country"].nunique()
+countries_part_by_year = df_hist[df_hist["accepted"]].groupby("year")[
+    "country"
+].nunique()
+countries_cum = countries_by_year.reindex(years, fill_value=0).cumsum()
+countries_part_cum = countries_part_by_year.reindex(years, fill_value=0).cumsum()
+
+fig_hist = go.Figure()
+fig_hist.add_bar(
+    name="Applicants",
+    x=years.astype(str),
+    y=applicants_cum,
+    marker_color="#2f3b52",
+)
+fig_hist.add_bar(
+    name="Participants",
+    x=years.astype(str),
+    y=participants_cum,
+    marker_color="#bb361e",
+)
+fig_hist.update_layout(
+    barmode="group",
+    height=260,
+    margin=dict(l=40, r=10, t=40, b=40),
+    title_text="Students",
+    title_y=0.98,
+    yaxis_title="Number",
+    xaxis_title="",
+    barcornerradius=6,
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+    legend=dict(
+        x=0.02,
+        y=0.98,
+        bgcolor="rgba(0,0,0,0)",
+        bordercolor="rgba(255,255,255,0.4)",
+        borderwidth=1,
+        font=dict(color="#ffffff"),
+    ),
+    font=dict(color="#ffffff"),
+    template="simple_white",
+)
+fig_hist.update_xaxes(tickangle=-25)
+fig_hist.update_xaxes(color="#ffffff", tickfont=dict(color="#ffffff"), title_font=dict(color="#ffffff"))
+fig_hist.update_yaxes(
+    color="#ffffff",
+    tickfont=dict(color="#ffffff"),
+    title_font=dict(color="#ffffff"),
+    gridcolor="rgba(255,255,255,0.25)",
+    zerolinecolor="rgba(255,255,255,0.25)",
+    linecolor="rgba(255,255,255,0.6)",
+)
+
+fig_inst = go.Figure()
+fig_inst.add_bar(
+    name="Applicants",
+    x=years.astype(str),
+    y=institutes_cum,
+    marker_color="#2f3b52",
+)
+fig_inst.add_bar(
+    name="Participants",
+    x=years.astype(str),
+    y=institutes_part_cum,
+    marker_color="#bb361e",
+)
+fig_inst.update_layout(
+    barmode="group",
+    height=260,
+    margin=dict(l=40, r=10, t=40, b=40),
+    title_text="Institutes",
+    title_y=0.98,
+    yaxis_title="Number",
+    xaxis_title="",
+    barcornerradius=6,
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+    legend=dict(
+        x=0.02,
+        y=0.98,
+        bgcolor="rgba(0,0,0,0)",
+        bordercolor="rgba(255,255,255,0.4)",
+        borderwidth=1,
+        font=dict(color="#ffffff"),
+    ),
+    font=dict(color="#ffffff"),
+    template="simple_white",
+)
+fig_inst.update_xaxes(tickangle=-25)
+fig_inst.update_xaxes(color="#ffffff", tickfont=dict(color="#ffffff"), title_font=dict(color="#ffffff"))
+fig_inst.update_yaxes(
+    color="#ffffff",
+    tickfont=dict(color="#ffffff"),
+    title_font=dict(color="#ffffff"),
+    gridcolor="rgba(255,255,255,0.25)",
+    zerolinecolor="rgba(255,255,255,0.25)",
+    linecolor="rgba(255,255,255,0.6)",
+)
+
+fig_countries = go.Figure()
+fig_countries.add_bar(
+    name="Applicants",
+    x=years.astype(str),
+    y=countries_cum,
+    marker_color="#2f3b52",
+)
+fig_countries.add_bar(
+    name="Participants",
+    x=years.astype(str),
+    y=countries_part_cum,
+    marker_color="#bb361e",
+)
+fig_countries.update_layout(
+    barmode="group",
+    height=260,
+    margin=dict(l=40, r=10, t=40, b=40),
+    title_text="Countries",
+    title_y=0.98,
+    yaxis_title="Number",
+    xaxis_title="",
+    barcornerradius=6,
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+    legend=dict(
+        x=0.02,
+        y=0.98,
+        bgcolor="rgba(0,0,0,0)",
+        bordercolor="rgba(255,255,255,0.4)",
+        borderwidth=1,
+        font=dict(color="#ffffff"),
+    ),
+    font=dict(color="#ffffff"),
+    template="simple_white",
+)
+fig_countries.update_xaxes(tickangle=-25)
+fig_countries.update_xaxes(color="#ffffff", tickfont=dict(color="#ffffff"), title_font=dict(color="#ffffff"))
+fig_countries.update_yaxes(
+    color="#ffffff",
+    tickfont=dict(color="#ffffff"),
+    title_font=dict(color="#ffffff"),
+    gridcolor="rgba(255,255,255,0.25)",
+    zerolinecolor="rgba(255,255,255,0.25)",
+    linecolor="rgba(255,255,255,0.6)",
+)
+```
+
+::: {.columns style="column-gap: 2rem; gap: 2rem;"}
+::: {.column style="width: 33.33%;"}
+```{python}
+#| echo: false
+fig_hist
+```
+:::
+::: {.column style="width: 33.33%;"}
+```{python}
+#| echo: false
+fig_inst
+```
+:::
+::: {.column style="width: 33.33%;"}
+```{python}
+#| echo: false
+fig_countries
+```
+:::
+:::

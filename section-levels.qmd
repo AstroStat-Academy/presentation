@@ -1,0 +1,109 @@
+```{python}
+#| echo: false
+#| output: false
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+
+df_levels = pd.read_csv("assets/data/participants_until_2025.csv")
+df_levels["accepted"] = df_levels["accepted"].astype(str).str.upper().eq("TRUE")
+df_levels["year_num"] = pd.to_numeric(df_levels["year"], errors="coerce")
+df_levels["year"] = np.floor(df_levels["year_num"]).astype("Int64")
+df_levels = df_levels[df_levels["accepted"]]
+
+status_norm = df_levels["status"].astype(str).str.strip().str.upper()
+df_levels["level"] = np.select(
+    [
+        status_norm.str.contains("BSC|BACHELOR", regex=True),
+        status_norm.str.contains("MSC|MASTER", regex=True),
+        status_norm.str.contains("PHD", regex=True),
+    ],
+    ["BSc", "MSc", "PhD"],
+    default="Other",
+)
+
+years = (
+    df_levels["year"]
+    .dropna()
+    .astype(int)
+    .sort_values()
+    .unique()
+)
+year_labels = [str(y) for y in years]
+
+counts = (
+    df_levels.groupby(["year", "level"])
+    .size()
+    .unstack(fill_value=0)
+    .reindex(years, fill_value=0)
+)
+levels = ["BSc", "MSc", "PhD", "Other"]
+for level in levels:
+    if level not in counts:
+        counts[level] = 0
+counts = counts[levels]
+
+cumulative = counts.cumsum()
+
+colors = {
+    "BSc": "#d7a754",
+    "MSc": "#d6638a",
+    "PhD": "#8a53ca",
+    "Other": "#8bbf61",
+}
+
+fig_levels = go.Figure()
+for level in levels:
+    fig_levels.add_trace(
+        go.Scatter(
+            x=year_labels,
+            y=cumulative[level],
+            mode="lines+markers",
+            name=f"{level}",
+            marker=dict(size=9, color=colors[level], line=dict(width=1, color="rgba(0,0,0,0.3)")),
+            line=dict(width=3, color=colors[level]),
+        )
+    )
+
+fig_levels.update_layout(
+    height=360,
+    margin=dict(l=50, r=20, t=40, b=50),
+    title_text="Participants by level",
+    title_y=0.97,
+    xaxis_title="Year",
+    yaxis_title="Cumulative number",
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+    legend=dict(
+        x=0.02,
+        y=0.98,
+        bgcolor="rgba(0,0,0,0)",
+        bordercolor="rgba(255,255,255,0.4)",
+        borderwidth=1,
+        font=dict(color="#ffffff"),
+    ),
+    font=dict(color="#ffffff"),
+    template="simple_white",
+)
+fig_levels.update_xaxes(
+    tickangle=-25,
+    color="#ffffff",
+    tickfont=dict(color="#ffffff"),
+    title_font=dict(color="#ffffff"),
+    gridcolor="rgba(255,255,255,0.15)",
+    linecolor="rgba(255,255,255,0.6)",
+)
+fig_levels.update_yaxes(
+    color="#ffffff",
+    tickfont=dict(color="#ffffff"),
+    title_font=dict(color="#ffffff"),
+    gridcolor="rgba(255,255,255,0.25)",
+    zerolinecolor="rgba(255,255,255,0.25)",
+    linecolor="rgba(255,255,255,0.6)",
+)
+```
+
+```{python}
+#| echo: false
+fig_levels
+```
