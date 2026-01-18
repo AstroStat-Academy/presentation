@@ -14,7 +14,7 @@ h1.title {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.35rem;
 }
 
 .quarto-title::before {
@@ -24,6 +24,20 @@ h1.title {
   height: clamp(80px, 10vw, 140px);
   background: url("../assets/images/logo_w_lowres.png") center/contain no-repeat;
   flex: 0 0 auto;
+}
+
+.quarto-title::after {
+  content: "astrostatacademy@gmail.com";
+  order: 1;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  opacity: 0.8;
+  margin-top: -0.1rem;
+}
+
+.quarto-title > h1 {
+  order: 2;
 }
 
 @media (max-width: 640px) {
