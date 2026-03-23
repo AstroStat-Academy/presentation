@@ -2,6 +2,7 @@ project:
   type: website
   resources:
     - assets/
+    - schools/
 
 website:
   title: "Pitch Deck"
